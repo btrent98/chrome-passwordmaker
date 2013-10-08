@@ -117,6 +117,8 @@ function updateURL(url) {
     $("#usedtext").attr('alt', url);
     // Store either matched url or, if set, use profiles own "use text"
     $("#usedtext").val(((profile.getText()) ? profile.getText() : profile.getUrl(url)));
+    // Store username
+    $("#username").val(profile.getUsername());
 }
 
 function onProfileChanged() {
@@ -189,6 +191,7 @@ function init(url) {
 }
 
 function fillPassword() {
+    chrome.tabs.sendRequest(currentTab, {username: $("#username").val()});
     chrome.tabs.sendRequest(currentTab, {password: $("#generated").val()});
     window.close();
 }

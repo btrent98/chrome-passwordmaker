@@ -144,6 +144,11 @@ Profile.prototype.getText = function(url) {
     return this.strUseText;
 }
 
+// Return username
+Profile.prototype.getUsername = function(url) {
+    return this.username;
+}
+
 Profile.prototype.getUrl = function(url) {
     if (url == null) {
         return "";
